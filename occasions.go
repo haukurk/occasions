@@ -18,12 +18,10 @@ func main() {
 	var cfg Configuration
 
 	// Config file read
-	err := gcfg.ReadFileInto(&cfg, "/etc/occasions/occasions.conf")
+	err := gcfg.ReadFileInto(&cfg, "/etc/occasions/occasions.conf") // TODO: Add possibility to define this as an argument.
 
 	if err != nil {
 		fmt.Println("Error finding config file")
-	} else {
-		//fmt.Println("No error")
 	}
 
 	if cfg.General.Ics != "" {
