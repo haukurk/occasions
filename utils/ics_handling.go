@@ -44,11 +44,9 @@ func ParseDates(folder string) []ODate {
 			if lock == true {
 				if strings.Contains(line, "BEGIN:VEVENT") {
 					message := fmt.Sprintf("Malformed ics file (%s) line: %d", f.Name(), i)
-					//log.Fatalf(message)
 					errors = append(errors, message)
 				} else if strings.Contains(line, "END:VEVENT") {
 					lock = false
-					// Add to Dates Slice
 					dates = append(dates, tmpOdate)
 				} else {
 					re_summary := regexp.MustCompile(`SUMMARY:(.*)`)
@@ -67,7 +65,6 @@ func ParseDates(folder string) []ODate {
 					lock = true
 				} else if strings.Contains(line, "END:VEVENT") {
 					message := fmt.Sprintf("Malformed ics file (%s) line: %d", f.Name(), i)
-					//log.Fatalf(message)
 					errors = append(errors, message)
 				}
 			}
@@ -75,7 +72,6 @@ func ParseDates(folder string) []ODate {
 	}
 
 	if len(errors) == 0 {
-		//fmt.Println(dates)
 		//log.Print("All vCalendar files parsed successfully")
 	} else {
 		log.Printf("Errors occured when parsing your vCalendar files in %s", folder)
