@@ -30,6 +30,7 @@ func main() {
 
 		occasions := 0
 		now := time.Now()
+		year, month, day := now.Date()
 
 		fmt.Println("[Occasions] Hi, today is ", now)
 		fmt.Println("[Occasions] Checking for upcoming occasions..")
@@ -40,11 +41,16 @@ func main() {
 				log.Fatal("Error when parsing time from parsed vCals: ", err)
 				break
 			}
+			curr_year, curr_month, curr_day := timestart.Date()
 			// Ignore old events.
-			if timestart.After(now) {
+			today := ((curr_day == day) && (curr_month == month) && (curr_year == year))
+			if timestart.After(now) || today {
 				switch {
-				case timestart.Before(now.AddDate(0, 0, 1)):
+				case today:
 					fmt.Println("Today!", timestart, d.Summary)
+					occasions++
+				case timestart.Before(now.AddDate(0, 0, 1)):
+					fmt.Println("Tomorrow!", timestart, d.Summary)
 					occasions++
 				case timestart.Before(now.AddDate(0, 0, 7)):
 					fmt.Println("Next Week!", timestart, d.Summary)
