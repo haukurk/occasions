@@ -53,7 +53,7 @@ func main() {
 			}
 		}
 		if occasions == 0 {
-			fmt.Println("Not upcoming occasions found. Sorry :-(")
+			fmt.Println("[Occasions] Not upcoming occasions found. Sorry :-(")
 		}
 
 	} else {
