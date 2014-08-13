@@ -4,6 +4,7 @@ import "github.com/haukurk/occasions/utils"
 import "code.google.com/p/gcfg"
 import "fmt"
 import "log"
+import "time"
 
 type Configuration struct {
 	General struct {
@@ -27,8 +28,32 @@ func main() {
 	if cfg.General.Ics != "" {
 		dates := utils.ParseDates(cfg.General.Ics)
 
+		occasions := 0
+		now := time.Now()
+
+		fmt.Println("[Occasions] Hi, today is ", now)
+		fmt.Println("[Occasions] Checking for upcoming occasions..")
+
 		for _, d := range dates {
-			fmt.Println(d.Summary, d.DateStart)
+			timestart, err := time.Parse("20060102", d.DateStart)
+			if err != nil {
+				log.Fatal("Error when parsing time from parsed vCals: ", err)
+				break
+			}
+			// Ignore old events.
+			if timestart.After(now) {
+				switch {
+				case timestart.Before(now.AddDate(0, 0, 1)):
+					fmt.Println("Today!", timestart, d.Summary)
+					occasions++
+				case timestart.Before(now.AddDate(0, 0, 7)):
+					fmt.Println("Next Week!", timestart, d.Summary)
+					occasions++
+				}
+			}
+		}
+		if occasions == 0 {
+			fmt.Println("Not upcoming occasions found. Sorry :-(")
 		}
 
 	} else {
