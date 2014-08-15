@@ -1,5 +1,9 @@
 language: go
 
+install:
+  - go get "github.com/ant0ine/go-json-rest/rest"
+  - go get "code.google.com/p/gcfg"
+
 go:
   - 1.0
   - 1.1
