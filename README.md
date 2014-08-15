@@ -62,11 +62,9 @@ So that you will be notified when you login to your box.
 For example if you are using Bash, you can simply add ```occasions``` at the bottom of your ```.bashrc``` file.
 Thus getting a greeting message like this:
 ```
-Last login: Wed Aug 13 14:38:15 2014 from X.X.X.X
-[Occasions] Hi, today is  2014-08-13 14:49:43.395707009 +0000 UTC
-[Occasions] Checking for upcoming occasions..
+Last login: Fri Aug 15 18:40:10 2014 from 69.69.69.69
+[Occasions] Hi! Today is Fri, 08/15/14
 [Occasions] Not upcoming occasions found. Sorry :-(
-[14:49:43] (root@orange:~)> 
-
+[18:46:28] (root@orange:~)> 
 ```
 
