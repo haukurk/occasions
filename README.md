@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/haukurk/occasions.svg?branch=master)](https://travis-ci.org/haukurk/occasions)
+
 # Occasions
 Occasions is a program that handles special occasions dates. 
 It collects the dates from a vcal files. 
