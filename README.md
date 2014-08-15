@@ -64,7 +64,7 @@ Thus getting a greeting message like this:
 ```
 Last login: Fri Aug 15 18:40:10 2014 from 69.69.69.69
 [Occasions] Hi! Today is Fri, 08/15/14
-[Occasions] Not upcoming occasions found. Sorry :-(
+[Occasions] No upcoming occasions found. Sorry :-(
 [18:46:28] (root@orange:~)> 
 ```
 

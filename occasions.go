@@ -47,7 +47,7 @@ func main() {
 		}
 
 		if count == 0 {
-			fmt.Println("[Occasions] Not upcoming occasions found. Sorry :-(")
+			fmt.Println("[Occasions] No upcoming occasions found. Sorry :-(")
 		} else {
 			for _, v := range out {
 				fmt.Println("[Occasions] " + v.Greeting + ", " + v.DateStart + " - " + v.Summary)
