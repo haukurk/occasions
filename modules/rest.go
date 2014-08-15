@@ -1,32 +1,34 @@
-package main
+package modules
 
 import (
+	"fmt"
 	"github.com/ant0ine/go-json-rest/rest"
 	"github.com/haukurk/occasions/utils"
+	"log"
 	"net/http"
 )
 
-type ODate struct {
-	Summary   string
-	DateStart string
-	DateEnd   string
-}
-
-func GetOccasions(w rest.ResponseWriter, req *rest.Request) {
-	datesor := ODate{
+func getOccasions(w rest.ResponseWriter, req *rest.Request) {
+	datesor := utils.ODate{
 		Summary:   "blehhh",
-		DateStart: "Antoine",
+		DateStart: req.PathParam("num"),
 		DateEnd:   "hehe",
 	}
 
 	w.WriteJson(&datesor)
 }
 
-func initRestInterface(string Port) {
+func InitRestInterface(p string) {
 	handler := rest.ResourceHandler{}
-	handler.SetRoutes(
-		rest.Route{"GET", "/api", GetOccasions},
+	err := handler.SetRoutes(
+		&rest.Route{"GET", "/api/occasions", getOccasions},
 	)
-	listenStr := []string{"", ":", Port}
-	http.ListenAndServe(listenStr, &handler)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("[Occasions] Starting REST Interface on port " + p + "..")
+	log.Fatal(http.ListenAndServe(":"+p, &handler))
+
 }

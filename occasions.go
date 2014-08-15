@@ -1,6 +1,7 @@
 package main
 
 import "github.com/haukurk/occasions/utils"
+import "github.com/haukurk/occasions/modules"
 import "code.google.com/p/gcfg"
 import "fmt"
 import "log"
