@@ -20,6 +20,9 @@ cat<< EOF> /etc/occasions/occasions.conf
  
  # ics folder location 
  ics=/etc/occasions/ics
+
+ # port to listen to
+ port=81
 EOF
 
 ```
@@ -41,7 +44,13 @@ It will then notify you if there is any occasions upcoming based on your vCal fi
 
 # REST API
 
-Not implemented yet.
+To run the REST interface you run the command ```occasions rest```.
+You will then run a HTTP server listening on a port defined in your ```/etc/occasions/occasions.conf```.
+The following resources are available:
+* [GET] /api/occasions
+  (Get all occasions in you vCal files)
+* [GET] /api/occasions/upcoming
+  (Get upcoming occasions from your vCal files)
 
 # Tips!
 
