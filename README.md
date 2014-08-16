@@ -59,7 +59,13 @@ The following resources are available:
 I recommend you to add this as a greeting message to your shell. 
 So that you will be notified when you login to your box.
 
-For example if you are using Bash, you can simply add ```occasions``` at the bottom of your ```.bashrc``` file.
+For example if you are using Bash, you can simply add the following lines
+to the bottom of your ```.bashrc```
+```
+# If not running interactively, don't do anything
+if [[ $- != *i* ]]; then return; else occasions; fi     
+```
+
 Thus getting a greeting message like this:
 ```
 Last login: Fri Aug 15 18:40:10 2014 from 69.69.69.69
