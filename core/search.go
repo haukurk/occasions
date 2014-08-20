@@ -28,19 +28,19 @@ func UpcomingDates(dates []ODate) (error_function error, out []ODate, count int)
 			case today:
 				d.DateStart = timestart.Format(layout)
 				d.DateEnd = timeend.Format(layout)
-				d.Greeting = "Today"
+				d.Greeting = "Today,"
 				out = append(out, d)
 				count++
 			case timestart.Before(now.AddDate(0, 0, 1)):
 				d.DateStart = timestart.Format(layout)
 				d.DateEnd = timeend.Format(layout)
-				d.Greeting = "Tomorrow"
+				d.Greeting = "Tomorrow,"
 				out = append(out, d)
 				count++
 			case timestart.Before(now.AddDate(0, 0, 7)):
 				d.DateStart = timestart.Format(layout)
 				d.DateEnd = timeend.Format(layout)
-				d.Greeting = "Next Week"
+				d.Greeting = "Next"
 				out = append(out, d)
 				count++
 			}
